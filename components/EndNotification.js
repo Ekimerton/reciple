@@ -8,7 +8,6 @@ function NotificationComponent({ target, previousGuesses }) {
   const [api, contextHolder] = notification.useNotification();
 
   useEffect(() => {
-    console.log("fuck");
     if (!target || !previousGuesses) return;
 
     if (previousGuesses.length > 0 && previousGuesses[0].name === target.name) {
@@ -37,13 +36,10 @@ function NotificationComponent({ target, previousGuesses }) {
       });
     } else if (previousGuesses.length >= 5) {
       api.open({
-        message: "You sux!!",
+        message: "Game Over! :(",
         description: (
           <div>
-            <p>
-              Today&apos;s recipe was {target.name}. You sux farts out of my
-              ass!
-            </p>
+            <p>Today&apos;s recipe was {target.name}. Better luck next time!</p>
             <Timer isModalActive={true} />
           </div>
         ),
